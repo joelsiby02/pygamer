@@ -1,5 +1,6 @@
 
-You can use this web application on  [pygamer.com](mailto:pygamer.streamlit.app/)
+You can use this web application on [pygamer.app](https://pygamer.streamlit.app/)
+
 
 ## Project Name: Pygamer
 
