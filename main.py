@@ -7,7 +7,18 @@ from agents import GameAgents
 # Load environment variables if necessary
 load_dotenv()
 
-def build_game():
+# Function to get user input for Google API key
+def get_google_api_key():
+    st.sidebar.subheader("Enter your Google API Key")
+    google_api_key = st.sidebar.text_input("Google API Key", type="password")
+    return google_api_key
+
+# Function to configure Google API key
+def configure_google_api_key(google_api_key):
+    # You can configure the API key here
+    pass
+
+def build_game(google_api_key):
     tasks = GameTasks()
     agents = GameAgents()
 
@@ -16,6 +27,9 @@ def build_game():
     game = st.text_input("What is the game you would like to build? Write a prompt to describe its mechanics?")
 
     if st.button("Build Game"):
+        # Configure Google API key
+        configure_google_api_key(google_api_key)
+
         # Create Agents
         senior_engineer_agent = agents.senior_engineer_agent()
         qa_engineer_agent = agents.qa_engineer_agent()
@@ -62,7 +76,8 @@ def main():
     menu_selection = st.sidebar.radio("Navigation", ["Build Game"])
 
     if menu_selection == "Build Game":
-        build_game()
+        google_api_key = get_google_api_key()
+        build_game(google_api_key)
 
 if __name__ == "__main__":
     main()
